@@ -24,24 +24,37 @@
             <nav class="flex space-x-6 items-center">
                 <a href="{{ url('/') }}"
                     class="text-white hover:text-green-200 font-medium transition-colors text-xl">Inicio</a>
+                
+            <div class="relative group">
                 <a href="{{ url('/category') }}"
-                    class="text-white hover:text-green-200 font-medium transition-colors text-xl">Categorías</a>
-                @auth
-                    <a href="{{ route('profile.edit') }}"
-                        class="text-white hover:text-green-200 font-medium transition-colors text-xl">Perfil</a>
-                    <form method="POST" action="{{ route('logout') }}" class="inline">
-                        @csrf
-                        <button type="submit"
-                            class="text-white hover:text-green-200 font-medium transition-colors text-xl">Cerrar Sesion</button>
-                    </form>
-                @else
-                    <a href="{{ url('/login') }}"
-                        class="text-white hover:text-green-200 font-medium transition-colors text-xl">Iniciar Sesion</a>
-                    <a href="{{ url('/register') }}"
-                        class="text-white hover:text-green-200 font-medium transition-colors text-xl">Registrarse</a>
-                @endauth
-            </nav>
+                    class="text-white hover:text-green-200 font-medium transition-colors text-xl inline-block">Posts</a>
+                <div
+                    class="absolute left-0 mt-1 w-40 bg-white text-green-800 rounded shadow-lg opacity-0 invisible group-hover:visible group-hover:opacity-100 transition-opacity duration-200 z-10">
+                    <a href="{{ url('/category') }}"
+                        class="block px-4 py-2 hover:bg-green-200 transition-colors">Todos</a>
+                    <a href="{{ url('/category?category=nacional') }}"
+                        class="block px-4 py-2 hover:bg-green-200 transition-colors">Nacional</a>
+                    <a href="{{ url('/category?category=internacional') }}"
+                        class="block px-4 py-2 hover:bg-green-200 transition-colors">Internacional</a>
+                </div>
+            </div>
+
+            @auth
+                <a href="{{ route('profile.edit') }}"
+                    class="text-white hover:text-green-200 font-medium transition-colors text-xl">Perfil</a>
+                <form method="POST" action="{{ route('logout') }}" class="inline">
+                    @csrf
+                    <button type="submit"
+                        class="text-white hover:text-green-200 font-medium transition-colors text-xl">Cerrar Sesion</button>
+                </form>
+            @else
+                <a href="{{ url('/login') }}"
+                    class="text-white hover:text-green-200 font-medium transition-colors text-xl">Iniciar Sesion</a>
+                <a href="{{ url('/register') }}"
+                    class="text-white hover:text-green-200 font-medium transition-colors text-xl">Registrarse</a>
+            @endauth
         </nav>
+    </nav>
     </header>
     <main class="container mx-auto p-6 flex-grow">
         @yield('content')
