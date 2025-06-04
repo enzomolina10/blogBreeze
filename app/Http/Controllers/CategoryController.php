@@ -5,13 +5,33 @@ use App\Models\Post;
 
 
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+
 
 class CategoryController extends Controller
 {
-    public function getIndex() {
-        $posts= Post::orderBy('id', 'desc')->get(); 
-        return view('category.index', compact('posts'));
+    use AuthorizesRequests;
+
+public function getIndex(Request $request)
+{
+    $category = $request->query('category');
+
+    $normalizedCategory = $category ? ucfirst(strtolower($category)) : null;
+    $query = $normalizedCategory
+        ? Post::where('category', $normalizedCategory)->orderBy('id', 'desc')
+        : Post::orderBy('id', 'desc');
+    $posts = $query->paginate(6);
+    if ($category) {
+        $posts->appends(['category' => $category]);
     }
+    return view('category.index', [
+        'posts' => $posts,
+        'category' => $category
+    ]);
+}
+
+
+
 
     public function getShow($id)
     {
@@ -32,7 +52,8 @@ class CategoryController extends Controller
         $post->category = $request->category;
         $post->content = $request->content;
         $post->poster = $request->poster;
-
+        /* $post->user_id = auth()->id(); no me deja subir el post*/
+        
         $post->save();
 
         return redirect('/category');
@@ -41,6 +62,7 @@ class CategoryController extends Controller
     public function getEdit($id)
         {
     $post = Post::findOrFail($id);
+    $this->authorize('update', $post);
     return view('category.edit', compact('post'));
     }
 
@@ -48,6 +70,7 @@ class CategoryController extends Controller
     {
         $post = Post::findOrFail($id);
 
+        $this->authorize('update', $post);
         $post->title = $request->title;
         $post->category = $request->category;
         $post->content = $request->content;
@@ -61,6 +84,7 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $post = Post::findOrFail($id);
+        $this->authorize('delete', $post);
         $post->delete();
 
         return redirect('/category');

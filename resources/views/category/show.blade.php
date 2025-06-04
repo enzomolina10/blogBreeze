@@ -7,15 +7,19 @@
     <p>{{ $post->content }}</p>
     <p><strong>Habilitado:</strong> {{ $post->habilitated ? 'Sí' : 'No' }}</p>
 
-    <a class="border" href="/category/edit/{{$post->id}}">
+    <!-- <a class="border" href="/category/edit/{{$post->id}}">
         Editar post
-    </a>
-
-    <form action="/category/{{$post->id}}" method="POST">
+    </a> -->
+    @can('update', $post)
+    <a href="/category/edit/{{$post->id}}">Editar</a>
+@endcan
+    @can('update', $post)
+        <form action="/category/{{$post->id}}" method="POST">
         @csrf
         @method('DELETE')
         <button class="border" type="submit">
             Eliminar post
         </button>
     </form>
+    @endcan
     @endsection
