@@ -6,6 +6,7 @@ use App\Models\Post;
 
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Facades\Auth;
 
 
 class CategoryController extends Controller
@@ -88,5 +89,13 @@ public function getIndex(Request $request)
         $post->delete();
 
         return redirect('/category');
+    }
+
+    public function getDashboard() 
+    {
+        $posts = Post::where('user_id', Auth::id())
+                    ->orderBy('id', 'desc')
+                    ->paginate(6);
+        return view('dashboard', compact('posts'));
     }
 }

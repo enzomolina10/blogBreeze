@@ -16,7 +16,7 @@
     @else
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             @foreach ($posts as $post)
-                <a href="{{ url('category/show/' . $post->id) }}" class="relative group overflow-hidden rounded-lg shadow-lg">
+                <a href="{{ route('category.show', ['id' => $post->id]) }}" class="relative group overflow-hidden rounded-lg shadow-lg">
                     {{-- Imagen del post --}}
                     <img src="{{ $post->poster }}" alt="{{ $post->title }}" class="w-full h-64 object-cover">
 
@@ -33,7 +33,7 @@
 
         </div>
     @endif
-    <div class="flex m-10">
-        {{ $posts->links() }}
-    </div>
+    <div class="mt-10">
+            {{ $posts->links() }}
+        </div>
 @endsection

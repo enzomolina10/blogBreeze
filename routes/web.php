@@ -11,9 +11,7 @@ Route::get('/category', [CategoryController::class, 'getIndex'])->name('category
 Route::get('/category/show/{id}', [CategoryController::class, 'getShow'])->name('category.show');
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [CategoryController::class, 'getDashboard'])->name('category.dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
