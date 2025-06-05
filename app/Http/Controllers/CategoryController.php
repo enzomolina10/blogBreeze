@@ -52,7 +52,7 @@ public function getIndex(Request $request)
         $post->category = $request->category;
         $post->content = $request->content;
         $post->poster = $request->poster;
-        /* $post->user_id = auth()->id(); no me deja subir el post*/
+        $post->user_id = auth()->id(); 
         
         $post->save();
 
