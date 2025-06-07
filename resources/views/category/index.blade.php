@@ -6,6 +6,10 @@
         <h2 class="text-2xl mb-6 text-green-900 text-left font-bold">Filtrando por categoría: <span
             class="font-black">{{ ucfirst($category) }}</span></h2>
     @endif
+    <form action="{{ route('category.index') }}" method="GET" class="mb-4">
+        <input type="text" name="search" value="{{ request('search') }}" placeholder="Buscar posts..." class="border rounded px-3 py-1">
+        <button type="submit" class="bg-blue-500 text-white px-3 py-1 rounded">Buscar</button>
+    </form>
 
     <a href="/category/create"
         class="inline-block mb-4 px-6 py-3 bg-green-600 text-white font-bold text-xl rounded-lg shadow hover:bg-green-700 transition-colors duration-200">
