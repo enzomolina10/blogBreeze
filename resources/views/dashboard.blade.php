@@ -1,13 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="text-4xl font-extrabold tracking-tight text-green-800 drop-shadow-lg mb-6">TUS POSTS</h1>
+<div class="flex justify-between">
+<h1 class="text-4xl font-extrabold tracking-tight text-green-800 drop-shadow-lg mb-4">Tus posts</h1>
     <div>
         <a href="/category/create"
-        class="inline-block mb-4 px-6 py-3 bg-green-600 text-white font-bold text-xl rounded-lg shadow hover:bg-green-700 transition-colors duration-200">
+        class="inline-block mb-4 px-6 py-3 bg-green-800 text-white font-bold text-xl rounded-lg shadow hover:bg-green-700 transition-colors duration-200">
         Nuevo post
     </a>
     </div>
+
+</div>
+    
     @if ($posts->isEmpty())
         <div class="text-center text-gray-600 text-lg mt-10">
             Aún no creaste ningún post.
