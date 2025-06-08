@@ -35,7 +35,7 @@
         <a href="{{ route('category.index') }}"
           class="text-white hover:text-green-200 font-medium transition-colors text-xl inline-block">Posts</a>
         <div
-          class="absolute left-0 mt-1 w-40 bg-white text-green-800 rounded shadow-lg opacity-0 invisible group-hover:visible group-hover:opacity-100 transition-opacity duration-200 z-10">
+          class="absolute left-0 mt-0 w-40 bg-white text-green-800 rounded shadow-lg opacity-0 invisible group-hover:visible group-hover:opacity-100 transition-opacity duration-200 z-10">
           <a href="{{ route('category.index') }}"
             class="block px-4 py-2 hover:bg-green-200 rounded transition-colors">Todos</a>
           <a href="{{ route('category.index', ['category' => 'nacional']) }}"
@@ -50,7 +50,7 @@
         <a href="{{ route('profile.edit') }}"
           class="text-white hover:text-green-200 font-medium transition-colors text-xl">Perfil</a>
         <div
-          class="absolute left-0 mt-1 w-40 bg-white text-green-800 rounded shadow-lg opacity-0 invisible group-hover:visible group-hover:opacity-100 transition-opacity duration-200 z-10">
+          class="absolute left-0 mt-0 w-40 bg-white text-green-800 rounded shadow-lg opacity-0 invisible group-hover:visible group-hover:opacity-100 transition-opacity duration-200 z-10">
           <a href="{{ route('category.dashboard') }}"
             class="block px-4 py-2 hover:bg-green-200 rounded transition-colors">Tus posts</a>
         </div>
