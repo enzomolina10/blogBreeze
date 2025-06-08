@@ -16,15 +16,27 @@ class CategoryController extends Controller
 public function getIndex(Request $request)
 {
     $category = $request->query('category');
+    $search = $request->query('search');
 
     $normalizedCategory = $category ? ucfirst(strtolower($category)) : null;
-    $query = $normalizedCategory
-        ? Post::where('category', $normalizedCategory)->orderBy('id', 'desc')
-        : Post::orderBy('id', 'desc');
-    $posts = $query->paginate(6);
-    if ($category) {
-        $posts->appends(['category' => $category]);
+    $query = Post::query();
+
+    if ($normalizedCategory) {
+        $query->where('category', $normalizedCategory);
     }
+
+    if ($search) {
+        $query->where(function($q) use ($search) {
+            $q->where('title', 'like', "%$search%")
+              ->orWhere('content', 'like', "%$search%");
+        });
+    }
+
+    $posts = $query->orderBy('id', 'desc')->paginate(6);
+
+    if ($category) $posts->appends(['category' => $category]);
+    if ($search) $posts->appends(['search' => $search]);
+
     return view('category.index', [
         'posts' => $posts,
         'category' => $category

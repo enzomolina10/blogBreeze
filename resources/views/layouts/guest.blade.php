@@ -18,8 +18,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <body class="font-sans text-gray-900 antialiased">
-        <div class="flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-green-100">
+    <body class="font-sans text-black antialiased">
+        <div class="flex flex-col sm:justify-center items-center mt-6 pt-6 sm:pt-0">
             <div>
                 <a href="/">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Football_%28soccer_ball%29.svg" alt="Logo"
@@ -28,7 +28,7 @@
             </div>
 
             <div
-                class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-green-900 shadow-md overflow-hidden sm:rounded-lg">
+                class="w-full sm:max-w-xl mt-6 px-6 py-4 bg-white dark:bg-gray-300 shadow-md overflow-hidden sm:rounded-lg">
                 {{ $slot }}
             </div>
         </div>

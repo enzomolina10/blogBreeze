@@ -55,7 +55,7 @@
 
                 <div class="flex space-x-2">
                     @can('update', $post)
-                        <a href="/category/edit/{{ $post->id }}"
+                        <a href="{{ route('category.edit', ['id' => $post->id]) }}"
                             class="inline-flex items-center px-4 py-2 bg-blue-600 rounded-md font-semibold text-white hover:bg-blue-700 transition-colors duration-200">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
@@ -67,7 +67,7 @@
                     @endcan
 
                     @can('update', $post)
-                        <form action="/category/{{ $post->id }}" method="POST">
+                        <form class="delete-form" action="{{ route('category.destroy', ['id' => $post->id]) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit"
