@@ -16,12 +16,12 @@
 </head>
 
 
-    <header class="bg-gradient-to-r from-gray-400 to-gray-900 text-white p-4">
+    <header class="bg-gradient-to-r from-gray-400 to-gray-900 text-white p-3 ">
   <nav class="container mx-auto flex items-center justify-between">
     <!-- Izquierda: Logo + Texto -->
     <div class="flex items-center space-x-4 text-green-200">
       <a href="{{ route('home') }}">
-        <img src="{{ asset('images/leon.png') }}" alt="Logo" class="h-32 w-32 object-contain" />
+        <img src="{{ asset('images/leon.png') }}" alt="Logo" class="h-20 w-20 object-contain" />
       </a>
       <h1 class="text-4xl font-extrabold tracking-tight drop-shadow-lg">Fulbo 7</h1>
     </div>
