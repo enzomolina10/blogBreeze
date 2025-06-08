@@ -6,8 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="icon" type="image/svg+xml"
-        href="https://upload.wikimedia.org/wikipedia/commons/6/6e/Football_%28soccer_ball%29.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/leon.png') }}">
     <title>Fulbo</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -80,7 +79,7 @@
         Swal.fire(@json(session('swal')));
     </script>
     <footer class="bg-gradient-to-r from-gray-400 to-gray-900 text-white text-center p-4 w-full mt-auto">
-        &copy; {{ date('Y') }} Fulbo 7. <a href="https://github.com/RodriVelo/TP3-LARAVEL" target="_blank"
+        &copy; {{ date('Y') }} Fulbo 7. <a href="https://github.com/enzomolina10/blogBreeze" target="_blank"
             class="text-green-300 hover:text-green-200">GitHub</a>.
     </footer>
 </body>

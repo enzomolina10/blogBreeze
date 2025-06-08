@@ -70,7 +70,7 @@ Sigue estos pasos para instalar y configurar el proyecto correctamente:
 
 7. **Instalar Tailwind CSS con NPM**  
     Si aparece el siguiente problema:  
-    ![viteNoInstalado](public/images/viteNoInstalado.png)
+    ![npmProblem](public/images/npmProblem.png)
 
     Si no tienes instaladas las dependencias de NPM, ejecuta en otra terminal:
     ```bash
